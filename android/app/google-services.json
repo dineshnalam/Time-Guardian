@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1011659624970",
+    "project_id": "todo-on-drugs",
+    "storage_bucket": "todo-on-drugs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011659624970:android:391d81cb4b8baa4f4a05f3",
+        "android_client_info": {
+          "package_name": "com.example.contracto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpCc_ZD_kypue1JKKNVdAHP_cja2lBCgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011659624970:android:3cc6ddaca91ed0374a05f3",
+        "android_client_info": {
+          "package_name": "com.time.gaurdian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpCc_ZD_kypue1JKKNVdAHP_cja2lBCgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
