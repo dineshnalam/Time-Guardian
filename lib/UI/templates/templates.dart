@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:timegaurdian/models/template.dart';
 
 class TemplateScreen extends StatelessWidget {
+
+  List<Template> templates = getTemplates();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,15 +15,22 @@ class TemplateScreen extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
+        mainAxisSpacing: 0,
         padding: EdgeInsets.all(10.0),
-
-        children: [
-          Center(child: InfoCard(title: "Tasks", body: "This is a Template of Tasks, Click Below to use",onMoreTap: (){},)),
-          Center( child: InfoCard(title: "Weekly Planner", body: "This is a Template of Weekly Planner, here you can Plan your week",onMoreTap: (){},)),
-          5.height,
-          // InfoCard(title: "Title Here",onMoreTap: (){},),
-        ],
+        children: templates.map((template) {
+          return Center(
+            child: InfoCard(
+              title: template.name,
+              body: template.description,
+              onMoreTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => template.screen),
+                );
+              },
+            ),
+          );
+        }).toList(),
       ),
     );
   }
@@ -36,8 +47,7 @@ class InfoCard extends StatelessWidget {
 
   const InfoCard(
       {required this.title,
-      this.body =
-          """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudi conseqr!""",
+      required this.body,
       required this.onMoreTap,
       this.subIcon = const CircleAvatar(
         child: Icon(
@@ -53,8 +63,10 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      padding: EdgeInsets.all(10.0),
+      margin: EdgeInsets.only(bottom: 0.0, top: 0),
+      padding: EdgeInsets.all(13.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           boxShadow: [
@@ -66,12 +78,11 @@ class InfoCard extends StatelessWidget {
             )
           ],
           gradient: RadialGradient(
-            colors: [Colors.orangeAccent, Colors.orange],
+            colors: [Color.fromARGB(255, 255, 124, 64), Colors.orange],
             focal: Alignment.topCenter,
             radius: .85,
           )),
       child: Column(
-
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -95,34 +106,38 @@ class InfoCard extends StatelessWidget {
                 TextStyle(color: Colors.white.withOpacity(.75), fontSize: 14),
           ),
           SizedBox(height: 10),
-          Container(
-            width: double.infinity,
-            height: 50,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.0),
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
-                children: [
-                  subIcon,
-                  SizedBox(width: 3),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        subInfoText,
-                        style: TextStyle(
-                          color: Colors.orange,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+
+          GestureDetector(
+            onTap: onMoreTap,
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.0),
+                color: Colors.white,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Row(
+                  children: [
+                    subIcon,
+                    SizedBox(width: 3),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          subInfoText,
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           )

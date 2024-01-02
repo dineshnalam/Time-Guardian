@@ -1,3 +1,4 @@
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:timegaurdian/UI/splash_screen.dart';
 import 'package:timegaurdian/UI/walkthrough.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -32,6 +33,7 @@ void main() async {
     appleProvider: AppleProvider.appAttest,
     webProvider: ReCaptchaV3Provider('recaptcha-v3-site-key'),
   );
+
 
    runApp(ChangeNotifierProvider<timerservice>(
       create: (_) => timerservice(),

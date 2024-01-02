@@ -7,7 +7,7 @@ import 'package:timegaurdian/UI/pomodoro/homeScreen.dart';
 import 'package:timegaurdian/UI/task/history.dart';
 import 'package:timegaurdian/UI/task/new_task.dart';
 import 'package:timegaurdian/UI/task/on_going.dart';
-import 'package:timegaurdian/UI/template/template.dart';
+import 'package:timegaurdian/UI/templates/templates.dart';
 // import 'package:timegaurdian/utils/bottom_form.dart';
 import 'package:timegaurdian/utils/models.dart';
 import 'package:timegaurdian/utils/SliderWidget.dart';
