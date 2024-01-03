@@ -18,6 +18,7 @@ import 'package:flutter/services.dart';
 import 'package:timegaurdian/UI/pomodoro/timerservice.dart';
 import 'package:provider/provider.dart';
 
+
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
