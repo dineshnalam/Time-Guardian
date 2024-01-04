@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterWebFrame(
-      maximumSize: Size(475.0, 812.0),
+      maximumSize: Size(450.0, 900.0),
       enabled: kIsWeb,
       builder: (context) {
         FlutterNativeSplash.remove();

@@ -219,14 +219,14 @@ class _NewContractScreenState extends State<NewContractScreen> {
                 ticksColor: Colors.grey,
                 ticksOffset: -12,
                 labels: [
-                  "24 h",
-                  "3 h",
-                  "6 h",
-                  "9 h",
                   "12 h",
                   "15 h",
                   "18 h",
-                  "21 h"
+                  "21 h",
+                  "24 h",
+                  "3 h",
+                  "6 h",
+                  "9 h"
                 ].asMap().entries.map((e) {
                   return ClockLabel.fromIndex(
                       idx: e.key, length: 8, text: e.value);

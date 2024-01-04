@@ -64,7 +64,7 @@ class ContractorHistoryScreenState extends State<ContractorHistoryScreen> {
                         },
                       ),
                       Center(
-                          child: text("All Contracts",
+                          child: text("All Tasks)",
                               textColor: black,
                               fontSize: textSizeNormal,
                               fontFamily: fontBold))
@@ -227,33 +227,6 @@ class ContractorHistoryScreenState extends State<ContractorHistoryScreen> {
                               const Divider(
                                 endIndent: 32,
                                 color: Colors.black54,
-                              ),
-                              Text.rich(
-                                TextSpan(
-                                  text: 'Start Time : ',
-                                  style: primaryTextStyle(),
-                                  children: <InlineSpan>[
-                                    TextSpan(
-                                        text: mListings?[index]
-                                            .start
-                                            .toString(),
-                                        style: secondaryTextStyle()),
-                                  ],
-                                ),
-                              ),
-                              2.height,
-                              Text.rich(
-                                TextSpan(
-                                  text: 'End Time  : ',
-                                  style: primaryTextStyle(),
-                                  children: <InlineSpan>[
-                                    TextSpan(
-                                        text: mListings?[index]
-                                            .end
-                                            .toString(),
-                                        style: secondaryTextStyle()),
-                                  ],
-                                ),
                               ),
                               4.height,
                             ],

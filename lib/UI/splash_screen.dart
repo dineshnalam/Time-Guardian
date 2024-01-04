@@ -83,7 +83,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
         if (userSnpashot.exists) {
           //Existing User
-          Fluttertoast.showToast(msg: "Existing WOrker");
+          Fluttertoast.showToast(msg: "Existing User");
           ContractorHomePage().launch(context);
         } else {
           Fluttertoast.showToast(msg: "Error");

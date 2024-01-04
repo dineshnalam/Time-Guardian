@@ -26,7 +26,7 @@ class PomoScreen extends StatelessWidget {
         elevation: 10,
         backgroundColor: renderColor(provider.currentState),
         title: const Text(
-          'POMOTIMER',
+          'POMODORO',
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
         ),
         actions: [

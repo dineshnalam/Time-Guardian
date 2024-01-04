@@ -189,7 +189,7 @@ class VerificationScreenState extends State<VerificationScreen> {
 
     if (userSnpashot.exists) {
       //Existing User
-      Fluttertoast.showToast(msg: "Existing WOrker");
+      Fluttertoast.showToast(msg: "Existing User");
       ContractorHomePage().launch(context);
     } else {
       setState(() {isLoading = false;});

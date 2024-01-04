@@ -217,48 +217,13 @@ class EditProfileScreenState extends State<EditProfileScreen> {
             ]),
           ),
 
-          Text('Domains', style: boldTextStyle(size: 14)).visible(!widget.isContractor),
-          3.height.visible(widget.isContractor),
-
-          FastChoiceChips(
-            onSaved: (List<String>? value){cDomain = value!;},
-            
-            name: "domain", 
-            labelText: "Select Domains",
-            alignment: WrapAlignment.center,
-            chipPadding: const EdgeInsets.all(8),
-            validator: (value) => value == null || value.isEmpty
-              ? 'Please select atleast one Domain'
-              :null,
-            chips: [
-              FastChoiceChip(
-                value: "Electrician",
-                avatar: const Icon(Icons.electrical_services_outlined)
-              ),
-              FastChoiceChip(
-                value: "Plumber",
-                avatar: const Icon(Icons.plumbing)
-              ),
-              FastChoiceChip(
-                value: "Construction",
-                avatar: const Icon(Icons.construction)
-              ),
-              FastChoiceChip(
-                value: "Carpenter",
-                avatar: const Icon(Icons.carpenter)
-              ),
-            ]
-          ).visible(!widget.isContractor),
-          16.height,
-
-
           Text('City', style: boldTextStyle(size: 14)),
           3.height,
 
           FastDropdown<String>(
             onSaved: (String? value){cCity = value!;},
             name: 'city',
-            labelText: 'City of Work',
+            labelText: 'City',
             items: ['Hyderabad', 'Mumbai', 'Chennai', 'Banglaore', 'Delhi'],
             initialValue: 'Hyderabad',
           ),

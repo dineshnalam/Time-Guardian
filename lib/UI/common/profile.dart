@@ -2,6 +2,7 @@ import 'package:timegaurdian/UI/common/edit_profile.dart';
 import 'package:timegaurdian/UI/common/main_login.dart';
 import 'package:timegaurdian/utils/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -69,9 +70,35 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                   width: 120,
                 ).cornerRadiusWithClipRRect(60),
                 16.height,
-                Text('Rick Astley', style: boldTextStyle()),
-                Text('9876543210', style: secondaryTextStyle()),
-                16.height,
+
+                StreamBuilder<DocumentSnapshot>(
+  stream: FirebaseAuth.instance.currentUser != null
+      ? FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser?.uid).snapshots()
+      : Stream.empty(),
+  builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    if (snapshot.hasError) {
+      return Text("Something went wrong");
+    }
+
+    if (snapshot.connectionState == ConnectionState.active) {
+      Map<String, dynamic>? data = snapshot.data?.data() as Map<String, dynamic>?;
+      if (snapshot.data != null && snapshot.data?.exists == true && data != null && data.containsKey('name') && data.containsKey('phoneNo')) {
+        return Column(
+          children: <Widget>[
+            Text('Name: ${data['name']}', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('Number: ${data['phoneNo']}', style: TextStyle(color: Colors.grey)),
+          ],
+        );
+      } else {
+        return Text("No data");
+      }
+    }
+
+    return CircularProgressIndicator();
+  },
+)
+
+                ,16.height,
                 SettingItemWidget(
                     title: 'Edit Profile',
                     decoration: boxDecorationRoundedWithShadow(12, backgroundColor: context.cardColor),
@@ -87,14 +114,7 @@ class WAMyProfileScreenState extends State<WAMyProfileScreen> {
                     onTap: () {
                       //
                     }),
-                16.height,
-                SettingItemWidget(
-                    title: 'Settings',
-                    decoration: boxDecorationRoundedWithShadow(12, backgroundColor: context.cardColor),
-                    trailing: Icon(Icons.arrow_right, color: grey.withOpacity(0.5)),
-                    onTap: () {
-                      //
-                    }),
+  
                 16.height,
                 SettingItemWidget(
                     title: 'Logout',
